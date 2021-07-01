@@ -7,16 +7,16 @@ inputs:
   #   description: 'input description here'
   #   default: 'default value if applicable'
   repo:
-    required: true
+    # required: true
     description: 'repository'
   owner:
-    required: true
+    # required: true
     description: 'owner of repository'
   repo-token:
-    required: true
+    # required: true
     description: 'github token PAT for authN'
   tag:
-    required: true
+    # required: true
     description: 'release tag' 
 runs:
   using: 'node12'
