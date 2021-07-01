@@ -3,7 +3,7 @@ import * as github from '@actions/github'
 
 async function run(): Promise<void> {
   try {
-    const token = core.getInput('repoToken')
+    const token = core.getInput('repo-token')
     const tag = core.getInput('tag')
     const repo = core.getInput('repo')
     // const sha = core.getInput("commit-sha", { required: false }) || github.context.sha

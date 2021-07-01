@@ -41,7 +41,7 @@ const github = __importStar(__webpack_require__(438));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const token = core.getInput('repoToken');
+            const token = core.getInput('repo-token');
             const tag = core.getInput('tag');
             const repo = core.getInput('repo');
             // const sha = core.getInput("commit-sha", { required: false }) || github.context.sha
