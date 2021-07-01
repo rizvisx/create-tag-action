@@ -6,6 +6,18 @@ inputs:
     required: true
     description: 'input description here'
     default: 'default value if applicable'
+  repo:
+    required: true
+    description: 'repository'
+  owner:
+    required: true
+    description: 'owner of repository'
+  repoToken:
+    required: true
+    description: 'github token PAT for authN'
+  tag:
+    required: true
+    description: 'release tag' 
 runs:
   using: 'node12'
   main: 'dist/index.js'

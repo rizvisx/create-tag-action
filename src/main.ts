@@ -1,17 +1,22 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import * as github from '@actions/github'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
+    const token = core.getInput('repoToken')
+    const tag = core.getInput('tag')
+    const repo = core.getInput('repo')
+    // const sha = core.getInput("commit-sha", { required: false }) || github.context.sha
+    const octokit = github.getOctokit(token)
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    core.setOutput('time', new Date().toTimeString())
+    await octokit.rest.git.createRef({
+      owner: github.context.repo.owner,
+      repo: `${repo}`,
+      ref: `refs/tags/${tag}`,
+      sha: github.context.sha
+    })
   } catch (error) {
+    core.error(error)
     core.setFailed(error.message)
   }
 }
